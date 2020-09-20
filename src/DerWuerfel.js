@@ -10,15 +10,15 @@ export class DerWuerfel extends LitElement {
 
   static get styles() {
     return css`
-      main {
-        display: flex;
-        align-items: center;
-      }
-
       button {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 400px;
         text-align: center;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 40%
       }
     `;
   }
@@ -31,17 +31,14 @@ export class DerWuerfel extends LitElement {
   onClick() {
     let v = Math.floor(Math.random() * 6);
     while (v === this.wert) v = Math.floor(Math.random() * 6);
-
     this.wert = v;
   }
 
   render() {
     return html`
-      <main>
-        <button @click=${this.onClick}>
-          ${String.fromCharCode(0x2680 + this.wert)}
-        </button>
-      </main>
+      <button @click=${this.onClick}>
+        ${String.fromCharCode(0x2680 + this.wert)}
+      </button>
     `;
   }
 }
