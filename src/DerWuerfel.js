@@ -18,7 +18,20 @@ export class DerWuerfel extends LitElement {
         top: 0;
         bottom: 0;
         left: 0;
-        width: 40%
+        width: 40%;
+      }
+      @keyframes ani {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+          color: blue;
+        }
+      }
+      div {
+        animation-duration: 1s;
+        animation-name: ani;
       }
     `;
   }
@@ -35,10 +48,8 @@ export class DerWuerfel extends LitElement {
   }
 
   render() {
-    return html`
-      <button @click=${this.onClick}>
-        ${String.fromCharCode(0x2680 + this.wert)}
-      </button>
-    `;
+    const span = document.createElement('div');
+    span.innerText = String.fromCharCode(0x2680 + this.wert);
+    return html` <button @click=${this.onClick}>${span}</button> `;
   }
 }
